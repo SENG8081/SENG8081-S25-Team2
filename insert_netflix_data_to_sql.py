@@ -20,7 +20,7 @@ def connect_to_db():
         return None
 
 # --------------------------
-# STEP 2: Load Excel and CSV Files
+# STEP 2: Load cleaned Excel/CSV Files
 # --------------------------
 movies_cleaned = pd.read_excel(r"C:\Users\veera\OneDrive - Conestoga College\Desktop\datttaaa\cleaned_netflix_movies_data.xlsx")
 movies_detailed = pd.read_csv(r"C:\Users\veera\OneDrive - Conestoga College\Desktop\datttaaa\netflix_movies_detailed_up_to_2025_clean[1].csv")
@@ -28,7 +28,7 @@ tv_cleaned = pd.read_excel(r"C:\Users\veera\OneDrive - Conestoga College\Desktop
 tv_detailed = pd.read_csv(r"C:\Users\veera\OneDrive - Conestoga College\Desktop\datttaaa\netflix_tv_shows_detailed_up_to_2025_clean[1].csv")
 
 # --------------------------
-# STEP 3: Clean Numeric Columns & Dates
+# STEP 3: Clean Numeric Columns & Dates (optional, if needed)
 # --------------------------
 def clean_numeric(df, cols):
     for col in cols:
@@ -59,6 +59,14 @@ def insert_all_data():
         return
     cursor = conn.cursor()
 
+    # DELETE old data from all tables before inserting new
+    cursor.execute("DELETE FROM Cleaned_Netflix_Movies_Data")
+    cursor.execute("DELETE FROM Netflix_Movies_Detailed")
+    cursor.execute("DELETE FROM Cleaned_Netflix_TV_Shows")
+    cursor.execute("DELETE FROM Netflix_TV_Shows_Detailed")
+    conn.commit()
+    print("Old data deleted from all tables.")
+
     # Insert Cleaned Movies
     print("Inserting cleaned movies...")
     for _, row in movies_cleaned.iterrows():
@@ -76,12 +84,11 @@ def insert_all_data():
             float(row['vote_average']),
             int(row['vote_count']),
             row['overview'])
-            print(f"Inserted cleaned movie ID: {row['id']}")
         except Exception as e:
             print(f"Error inserting cleaned movie id {row['id']}: {e}")
 
     # Insert Detailed Movies
-    print("🔍 Inserting detailed movies...")
+    print("Inserting detailed movies...")
     for _, row in movies_detailed.iterrows():
         try:
             cursor.execute("""
@@ -110,7 +117,6 @@ def insert_all_data():
             int(float(row['budget'])),
             int(float(row['revenue'])),
             int(float(row['profit'])))
-            print(f"Inserted movie show_id: {row['show_id']}")
         except Exception as e:
             print(f"Failed to insert movie show_id {row['show_id']}: {e}")
 
@@ -130,42 +136,37 @@ def insert_all_data():
             float(row['popularity']),
             float(row['vote_average']),
             int(row['vote_count']))
-            print(f"Inserted cleaned TV show ID: {row['id']}")
         except Exception as e:
             print(f"Error inserting cleaned TV show id {row['id']}: {e}")
 
-    # FIXED: Insert Detailed TV Shows with correct float and string types
+    # Insert Detailed TV Shows
     print("Inserting detailed TV shows...")
     for _, row in tv_detailed.iterrows():
         try:
-            show_id = int(row['show_id']) if pd.notna(row['show_id']) else None
-            type_ = str(row['type']) if pd.notna(row['type']) else None
-            title = str(row['title']) if pd.notna(row['title']) else None
-            director = str(row['director']) if pd.notna(row['director']) else None
-            cast = str(row['cast']) if pd.notna(row['cast']) else None
-            country = str(row['country']) if pd.notna(row['country']) else None
-            date_added = row['date_added'].date() if pd.notna(row['date_added']) else None
-            release_year = int(row['release_year']) if pd.notna(row['release_year']) else None
-            rating = str(row['rating']) if pd.notna(row['rating']) else None
-            duration = str(row['duration']) if pd.notna(row['duration']) else None
-            genres = str(row['genres']) if pd.notna(row['genres']) else None
-            language = str(row['language']) if pd.notna(row['language']) else None
-            description = str(row['description']) if pd.notna(row['description']) else None
-            popularity = round(float(row['popularity']), 4) if pd.notna(row['popularity']) else 0.0
-            vote_count = int(row['vote_count']) if pd.notna(row['vote_count']) else 0
-            vote_average = round(float(row['vote_average']), 4) if pd.notna(row['vote_average']) else 0.0
-            num_seasons = int(row['num_seasons']) if pd.notna(row['num_seasons']) else 0
-
             cursor.execute("""
                 INSERT INTO Netflix_TV_Shows_Detailed
                 (show_id, type, title, director, cast, country, date_added, release_year, rating,
                  duration, genres, language, description, popularity, vote_count, vote_average,
                  num_seasons)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """, show_id, type_, title, director, cast, country, date_added, release_year,
-                rating, duration, genres, language, description,
-                popularity, vote_count, vote_average, num_seasons)
-            print(f"Inserted detailed TV show show_id: {show_id}")
+            """,
+            int(row['show_id']) if pd.notna(row['show_id']) else None,
+            str(row['type']),
+            str(row['title']),
+            str(row['director']),
+            str(row['cast']),
+            str(row['country']),
+            row['date_added'].date() if pd.notna(row['date_added']) else None,
+            int(row['release_year']) if pd.notna(row['release_year']) else None,
+            str(row['rating']),
+            str(row['duration']),
+            str(row['genres']),
+            str(row['language']),
+            str(row['description']),
+            round(float(row['popularity']), 4),
+            int(row['vote_count']),
+            round(float(row['vote_average']), 4),
+            int(row['num_seasons']) if pd.notna(row['num_seasons']) else None)
         except Exception as e:
             print(f"Error inserting detailed TV show show_id {row['show_id']}: {e}")
 

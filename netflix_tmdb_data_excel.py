@@ -52,8 +52,10 @@ tv_data = get_netflix_content('tv', pages=50)
 movies_df = filter_fields(movies_data, 'movie')
 tv_df = filter_fields(tv_data, 'tv')
 
-# Save to Excel
-movies_df.to_excel('netflix_movies.xlsx', index=False)
-tv_df.to_excel('netflix_tv_shows.xlsx', index=False)
+# Define the folder where you want to save the files
+SAVE_FOLDER = r"C:\Users\veera\OneDrive - Conestoga College\Desktop\datttaaa"
 
+# Save to Excel files at the specified folder
+movies_df.to_excel(f'{SAVE_FOLDER}\\netflix_movies.xlsx', index=False)   
+tv_df.to_excel(f'{SAVE_FOLDER}\\netflix_tv_shows.xlsx', index=False)    
 print("✅ Excel files created: 'netflix_movies.xlsx' and 'netflix_tv_shows.xlsx'")
