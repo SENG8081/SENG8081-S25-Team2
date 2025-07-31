@@ -112,10 +112,7 @@ Several problems with the data were identified and resolved, such as missing dat
 
 To handle them, Python libraries such as pandas and regular expressions were utilized to:
 
-Drop or suitably fill missing values
-
-Normalise country and language names
-
-Convert data to the correct type (e.g., dates, numbers)
-
-Remove non-English characters
+- Drop or suitably fill missing values
+- Normalise country and language names
+- Convert data to the correct type (e.g., dates, numbers)
+- Remove non-English characters
