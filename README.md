@@ -102,3 +102,20 @@ Use Microsoft SQL Server to store all Netflix movies and TV shows data.
 
 - Archive API data monthly to keep the database updated and clean.  
 - Set up automated backups to prevent data loss.
+
+
+---
+
+### Data Quality
+
+Several problems with the data were identified and resolved, such as missing data (director, cast), duplication (duplicate records), inconsistent naming standards (e.g., "USA" vs. "United States"), invalid formats (dates stored as strings), and garbage or emoji characters in some fields.
+
+To handle them, Python libraries such as pandas and regular expressions were utilized to:
+
+Drop or suitably fill missing values
+
+Normalise country and language names
+
+Convert data to the correct type (e.g., dates, numbers)
+
+Remove non-English characters
