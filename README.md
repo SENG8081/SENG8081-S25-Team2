@@ -199,7 +199,7 @@ This project combined historical information from Kaggle with live information f
 
 ---
 
-### References
+## References
 
 - Kaggle Netflix Dataset: https://www.kaggle.com/datasets/bhargavchirumamilla/netflix-movies-and-tv-shows-till-2025
 - TMDb API: https://developer.themoviedb.org/docs
