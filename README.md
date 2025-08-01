@@ -140,6 +140,9 @@ A data dictionary was used to define each column, including its type and accepte
 |duration |Runtime or number of seasons |String |e.g., "90 min", "1 Season", "4 Seasons" |
 |description |Summary or synopsis of the |String |Text, non-null |
 
+
+---
+
 ## Data Analysis and Visualizations
 
 Python libraries seaborn and matplotlib were used to create charts and analyze patterns of data. Visualizations included:
