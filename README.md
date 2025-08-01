@@ -130,20 +130,15 @@ A data dictionary was used to define each column, including its type and accepte
 
 ## Sample Data Dictionary
 
-- Column	Description	Example
-- show_id	Unique ID for the title	s1
-- type	Movie or TV Show	Movie
-- title	Title of the content	Stranger Things
-- Director	Name of the director: Shawn Levy
-- cast	Lead actors	Millie Bobby Brown
-- country	Production country	United States
-- release_year	Year in which the content was created	2019
-- duration	Length or number of seasons	2 Seasons
-- rating	Age rating	TV-14
-- description	Short description of the content	Sci-fi drama series
-
-
----
+| Variable Name | Defination | Data Type | Permissible Values |
+|---------------|------------|-----------|--------------------|
+|show_id | Unique identifier for each show or movie | String | Alphanumeric, non-null (e.g., "s1", "s2", ...) |
+|type |Type of content |String |"Movie", "TV Show" |
+|title |Title of the movie or TV show |String |Text, non-null |
+|director |Name(s) of the director(s) |String |Text may be null or "Not Available" |
+|cast |Main cast members |String |Text may be null or "Not Available" |
+|duration |Runtime or number of seasons |String |e.g., "90 min", "1 Season", "4 Seasons" |
+|description |Summary or synopsis of the |String |Text, non-null |
 
 ## Data Analysis and Visualizations
 
