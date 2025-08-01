@@ -106,7 +106,7 @@ Use Microsoft SQL Server to store all Netflix movies and TV shows data.
 
 ---
 
-### Data Quality
+## Data Quality
 
 
 Several problems with the data were identified and resolved, such as missing data (director, cast), duplication (duplicate records), inconsistent naming standards (e.g., "USA" vs. "United States"), invalid formats (dates stored as strings), and garbage or emoji characters in some fields.
@@ -121,20 +121,20 @@ To handle them, Python libraries such as pandas and regular expressions were uti
 
 ---
 
-### Data Documentation & Metadata
+## Data Documentation & Metadata
 
 A data dictionary was used to define each column, including its type and accepted values. Metadata offers data sources, cleaning rules, and transformation steps. This increases dataset transparency and allows consistent use by users and systems.
 
 
 ---
 
-### Sample Data Dictionary
+## Sample Data Dictionary
 
 - Column	Description	Example
 - show_id	Unique ID for the title	s1
 - type	Movie or TV Show	Movie
 - title	Title of the content	Stranger Things
-- director	Name of the director	Shawn Levy
+- Director	Name of the director: Shawn Levy
 - cast	Lead actors	Millie Bobby Brown
 - country	Production country	United States
 - release_year	Year in which the content was created	2019
@@ -145,7 +145,7 @@ A data dictionary was used to define each column, including its type and accepte
 
 ---
 
-### Data Analysis and Visualizations
+## Data Analysis and Visualizations
 
 Python libraries seaborn and matplotlib were used to create charts and analyze patterns of data. Visualizations included:
 
@@ -159,48 +159,40 @@ These visualizations helped in presenting the most popular genres, countries of 
 
 ---
 
-### Unit Testing
+## Unit Testing
 
-To guarantee functionality, a series of unit tests was designed using the pytest framework for the whole data pipeline. API integration, data cleaning, Excel export, SQL connection, and refresh automation were all covered.
-
-All 17 test cases were executed, with all passing, confirming the data pipeline is in working order and reliable.
-
-Code coverage was recorded and an HTML report generated using the pytest-cov plugin.
+- To guarantee functionality, a series of unit tests was designed using the pytest framework for the whole data pipeline. API integration, data cleaning, Excel export, SQL connection, and refresh automation were all covered.
+- All 17 test cases were executed, with all passing, confirming the data pipeline is in working order and reliable.
+- Code coverage was recorded and an HTML report generated using the pytest-cov plugin.
 
 
 ---
 
-### Project Extensions
+## Project Extensions
 
 The future directions are:
 
-Construction of a machine learning recommendation system
-
-Analysis of public opinion based on social media postings
-
-Automatic updating of API data implementation
-
-Investigating content equality by genre, country, and language coverage
+- Construction of a machine learning recommendation system
+- Analysis of public opinion based on social media postings
+- Automatic updating of API data implementation
+- Investigating content equality by genre, country, and language coverage
 
 
 ---
 
-### Future Work
+## Future Work
 
 Other possible improvements would be:
 
-Inclusion of data from IMDb and other sources
-
-Using user interaction data (views, likes) as predictors
-
-Forecasting trends through time series models
-
-Constructing the pipeline into a complete dashboard or web application
+- Inclusion of data from IMDb and other sources
+- Using user interaction data (views, likes) as predictors
+- Forecasting trends through time series models
+- Constructing the pipeline into a complete dashboard or web application
 
 
 ---
 
-### Conclusion
+## Conclusion
 
 This project combined historical information from Kaggle with live information from the TMDb API to create a cleaned, enriched dataset for Netflix content. The use of SQL Server and Python enabled effective analysis of content trends, genre, and user ratings. The system provides a solid foundation for future recommendation systems and analytics.
 
@@ -209,6 +201,5 @@ This project combined historical information from Kaggle with live information f
 
 ### References
 
-Kaggle Netflix Dataset: https://www.kaggle.com/datasets/bhargavchirumamilla/netflix-movies-and-tv-shows-till-2025
-
-TMDb API: https://developer.themoviedb.org/docs
+- Kaggle Netflix Dataset: https://www.kaggle.com/datasets/bhargavchirumamilla/netflix-movies-and-tv-shows-till-2025
+- TMDb API: https://developer.themoviedb.org/docs
