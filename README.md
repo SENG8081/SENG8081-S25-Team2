@@ -108,6 +108,8 @@ Use Microsoft SQL Server to store all Netflix movies and TV shows data.
 
 ### Data Quality
 
+### Data Quality
+
 Several problems with the data were identified and resolved, such as missing data (director, cast), duplication (duplicate records), inconsistent naming standards (e.g., "USA" vs. "United States"), invalid formats (dates stored as strings), and garbage or emoji characters in some fields.
 
 To handle them, Python libraries such as pandas and regular expressions were utilized to:
