@@ -116,3 +116,16 @@ To handle them, Python libraries such as pandas and regular expressions were uti
 - Normalise country and language names
 - Convert data to the correct type (e.g., dates, numbers)
 - Remove non-English characters
+
+
+---
+
+### Data Documentation & Metadata
+
+A data dictionary was used to define each column, including its type and accepted values. Metadata offers data sources, cleaning rules, and transformation steps. This increases dataset transparency and allows consistent use by users and systems.
+
+
+---
+
+### Sample Data Dictionary
+
