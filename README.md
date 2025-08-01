@@ -165,6 +165,8 @@ These visualizations helped in presenting the most popular genres, countries of 
 - All 17 test cases were executed, with all passing, confirming the data pipeline is in working order and reliable.
 - Code coverage was recorded and an HTML report generated using the pytest-cov plugin.
 
+<img width="1600" height="851" alt="image" src="https://github.com/user-attachments/assets/849c0f1b-ed22-4a61-a1e6-b0c70525f85b" />
+
 
 ---
 
