@@ -58,4 +58,4 @@ SAVE_FOLDER = r"C:\Users\veera\OneDrive - Conestoga College\Desktop\datttaaa"
 # Save to Excel files at the specified folder
 movies_df.to_excel(f'{SAVE_FOLDER}\\netflix_movies.xlsx', index=False)   
 tv_df.to_excel(f'{SAVE_FOLDER}\\netflix_tv_shows.xlsx', index=False)    
-print("✅ Excel files created: 'netflix_movies.xlsx' and 'netflix_tv_shows.xlsx'")
+print(" Excel files created: 'netflix_movies.xlsx' and 'netflix_tv_shows.xlsx'")
